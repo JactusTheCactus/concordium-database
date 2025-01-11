@@ -100,6 +100,14 @@ function generateCharacterDetailPage(characterData, data) {
         console.error("One or more required elements for character detail page not found!");
         return;
     }
+    function epithet(characterData) {
+        if (characterData.epithet != ``) {
+            return `"${characterData.epithet}"`
+        }
+        else {
+            return ``
+        }
+    }
 
     nameElement.innerHTML = `${characterData.name} ${characterData.rank}<br>${characterData.animal} ${characterData.alignment} of ${characterData.aspect}<br>"${characterData.epithet}"`;
     infoElement.innerHTML = `
