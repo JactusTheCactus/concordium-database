@@ -82,6 +82,12 @@ function generateCharacterSelectPage(data, category) {
     // Render the filtered characters
     filteredCharacters.forEach(([key, char]) => {
         const listItem = document.createElement('div');
+        const categoryTitle = document.createElement('p');
+        const infoElement = document.getElementById('categoryTitle');
+        categoryTitle.innerHTML = `
+                            Select a ${category}
+        `
+        console.log(`Category: ${category}`)
         listItem.classList.add('character-card');
         listItem.innerHTML = `
         <a href="/character.html?category=${category}&character=${key}">${char.name} (${char.aspect})</a>
