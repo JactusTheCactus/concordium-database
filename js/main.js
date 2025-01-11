@@ -105,10 +105,4 @@ function generateCharacterDetailPage(characterData, data) {
     nameElement.innerHTML = `${characterData.name} ${characterData.rank}, ${characterData.animal} ${characterData.alignment} of ${characterData.aspect}`;
     infoElement.innerHTML = `Weapon: ${characterData.weapon}<br>Power: ${characterData.power}`;
     detailsContainer.innerHTML = `${characterData.colour}<br>${characterData.species}<br>${inverseCharacterData.name} ${inverseCharacterData.rank}<br>${characterData.epithet}`
-
-    // details.forEach(detail => {
-    //     const listItem = document.createElement('p');
-    //     listItem.innerHTML = `<strong>${detail.label}:</strong> ${detail.value}`;
-    //     detailsContainer.appendChild(listItem);
-    // });
 }
