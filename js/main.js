@@ -6,14 +6,9 @@ fetch('/assets/data.json')
         return response.json();
     })
     .then(data => {
-        console.log('Fetched Data:', data); // Log the fetched data for debugging
         const urlParams = new URLSearchParams(window.location.search);
-        console.log('URL Parameters:', urlParams.toString()); // Log the URL parameters
         const category = urlParams.get('category');
         const character = urlParams.get('character');
-        
-        console.log('Category:', category); // Log the category
-        console.log('Character:', character); // Log the character
         
         if (category && character) {
             // If both category and character are in the URL, generate the character detail page
