@@ -22,7 +22,8 @@ fetch('/assets/data.json')
                 document.body.innerHTML = '<h1>Character not found</h1>';
             }
         } else {
-            generateMainPage();
+            console.error('Missing category or character');
+            document.body.innerHTML = '<h1>Error: Missing category or character in the URL</h1>';
         }
     })
     .catch((error) => {
@@ -55,7 +56,7 @@ function generateCharacterSelectPage(data, category) {
     // Render characters
     filteredCharacters.forEach(([key, char]) => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = `<a href="/character.html?character=${key}">${char.name} (${char.aspect})</a>`;
+        listItem.innerHTML = `<a href="/character.html?category=${category}&character=${key}">${char.name} (${char.aspect})</a>`;
         listContainer.appendChild(listItem);
     });
 }
