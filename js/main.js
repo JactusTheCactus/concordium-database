@@ -116,7 +116,7 @@ function generateCharacterDetailPage(characterData, data) {
     detailsContainer.innerHTML = ''; // Clear any existing content
 
     details.forEach(detail => {
-        const listItem = document.createElement('');
+        // const listItem = document.createElement('li');
         listItem.innerHTML = `<strong>${detail.label}:</strong> ${detail.value}`;
         detailsContainer.appendChild(listItem);
     });
