@@ -7,6 +7,9 @@ fetch('/assets/data.json')
         const category = urlParams.get('category');
         const character = urlParams.get('character');
         
+        console.log('Category:', category); // Log the category
+        console.log('Character:', character); // Log the character
+        
         if (category && !character) {
             generateCharacterSelectPage(data, category);
         } else if (category && character) {
