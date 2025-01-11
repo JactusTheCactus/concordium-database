@@ -10,20 +10,21 @@ fetch('/assets/data.json')
         console.log('Category:', category); // Log the category
         console.log('Character:', character); // Log the character
         
-        if (category && !character) {
-            generateCharacterSelectPage(data, category);
-        } else if (category && character) {
-            const characterData = Object.entries(data).find(([key]) => key === character)?.[1];
-            console.log('Character Data:', characterData); // Log the character data
+        if (category && character) {
+            // If both category and character are in the URL, generate the character detail page
+            const characterData = data[character];  // Access character data by key
             if (characterData) {
                 generateCharacterDetailPage(characterData);
             } else {
                 console.error('Character not found:', character);
                 document.body.innerHTML = '<h1>Character not found</h1>';
             }
+        } else if (category && !character) {
+            // If only category is in the URL, generate the character selection page
+            generateCharacterSelectPage(data, category);
         } else {
-            console.error('Missing category or character');
-            document.body.innerHTML = '<h1>Error: Missing category or character in the URL</h1>';
+            // If no category or character is in the URL, generate the main page
+            generateMainPage();
         }
     })
     .catch((error) => {
@@ -33,6 +34,7 @@ fetch('/assets/data.json')
 
 function generateMainPage() {
     // Main page is already in HTML, but you can modify it dynamically if needed
+    document.body.innerHTML = '<h1>Select a category to get started</h1>';
 }
 
 function generateCharacterSelectPage(data, category) {
@@ -45,7 +47,7 @@ function generateCharacterSelectPage(data, category) {
 
     listContainer.innerHTML = ''; // Clear the list container
 
-    // Filter characters by category
+    // Filter characters by category (Sin or Virtue)
     const filteredCharacters = Object.entries(data).filter(([key, char]) => char.alignment?.toLowerCase() === category);
 
     if (filteredCharacters.length === 0) {
@@ -53,7 +55,7 @@ function generateCharacterSelectPage(data, category) {
         return;
     }
 
-    // Render characters
+    // Render the filtered characters
     filteredCharacters.forEach(([key, char]) => {
         const listItem = document.createElement('li');
         listItem.innerHTML = `<a href="/character.html?category=${category}&character=${key}">${char.name} (${char.aspect})</a>`;
