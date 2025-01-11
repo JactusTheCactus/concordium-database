@@ -38,8 +38,13 @@ fetch('/assets/data.json')
     });
 
 function generateMainPage() {
-    // Create a simple list with links to "Sin" and "Virtue"
     const mainContainer = document.getElementById('main-page');
+    
+    if (!mainContainer) {
+        console.error("Main container not found!");
+        return;
+    }
+
     mainContainer.innerHTML = ''; // Clear the container
     
     const sinLink = document.createElement('a');
@@ -57,6 +62,12 @@ function generateMainPage() {
 
 function generateCharacterSelectPage(data, category) {
     const listContainer = document.getElementById('character-list');
+    
+    if (!listContainer) {
+        console.error("Character list container not found!");
+        return;
+    }
+
     if (!data || typeof data !== 'object') {
         console.error('Invalid data provided to generateCharacterSelectPage:', data);
         listContainer.innerHTML = '<li>Error loading characters</li>';
@@ -82,17 +93,17 @@ function generateCharacterSelectPage(data, category) {
 }
 
 function generateCharacterDetailPage(characterData) {
-    console.log('Generating character page for:', characterData); // Debugging log
     const nameElement = document.getElementById('character-name');
     const infoElement = document.getElementById('character-info');
     const detailsContainer = document.getElementById('character-details');
-
-    if (!characterData) {
-        console.error('Invalid character data:', characterData);
-        document.body.innerHTML = '<h1>Character data not found</h1>';
+    
+    if (!nameElement || !infoElement || !detailsContainer) {
+        console.error("One or more required elements for character detail page not found!");
         return;
     }
-    
+
+    console.log('Generating character page for:', characterData); // Debugging log
+
     nameElement.innerHTML = characterData.name;
     infoElement.innerHTML = `Aspect: ${characterData.aspect}<br>Weapon: ${characterData.weapon}<br>Power: ${characterData.power}`;
     
