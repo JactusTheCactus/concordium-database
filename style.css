@@ -11,6 +11,12 @@ body {
     background-color: #333;
     color: white;
   }
+
+  #character-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two columns */
+    gap: 20px; /* Adjust the gap between columns and rows */
+  }
   
   #character-details {
     text-align: left;
