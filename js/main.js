@@ -107,8 +107,6 @@ function generateCharacterDetailPage(characterData) {
         { label: 'Animal', value: characterData.animal },
         { label: 'Colour', value: characterData.colour },
         { label: 'Species', value: characterData.species },
-        { label: 'Sex', value: characterData.sex },
-        { label: 'Alignment', value: characterData.alignment },
         { label: 'Inverse', value: characterData.inverse },
         { label: 'Epithet', value: characterData.epithet || 'None' }
     ];
