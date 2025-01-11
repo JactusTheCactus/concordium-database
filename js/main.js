@@ -22,13 +22,28 @@ function generateMainPage() {
 
 // Function to generate the character select page
 function generateCharacterSelectPage(data, category) {
-    const listContainer = document.getElementById('character-list');
-    const characters = Object.keys(data[category]);
+    if (!data || typeof data !== 'object') {
+        console.error('Invalid data received:', data); // Log invalid data
+        return;
+    }
 
-    characters.forEach(characterKey => {
-        const character = data[category][characterKey];
+    const listContainer = document.getElementById('character-list');
+    listContainer.innerHTML = ''; // Clear previous content
+
+    // Filter characters by alignment
+    const filteredCharacters = Object.entries(data).filter(
+        ([key, character]) => character.alignment?.toLowerCase() === category
+    );
+
+    if (filteredCharacters.length === 0) {
+        listContainer.innerHTML = `<li>No Concordants found for ${category}</li>`;
+        return;
+    }
+
+    // Generate list items
+    filteredCharacters.forEach(([key, character]) => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = `<a href="/character.html?category=${category}&character=${characterKey}">${character.name}</a>`;
+        listItem.innerHTML = `<a href="/character.html?character=${key}">${character.name} (${character.aspect})</a>`;
         listContainer.appendChild(listItem);
     });
 }
