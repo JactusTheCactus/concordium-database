@@ -91,14 +91,14 @@ function generateCharacterDetailPage(characterData) {
     const nameElement = document.getElementById('character-name');
     const infoElement = document.getElementById('character-info');
     const detailsContainer = document.getElementById('character-details');
+    console.log(characterData);
     var inverse = characterData.inverse;
+    console.log(inverse);
     
     if (!nameElement || !infoElement || !detailsContainer) {
         console.error("One or more required elements for character detail page not found!");
         return;
     }
-
-    console.log('Generating character page for:', characterData); // Debugging log
 
     nameElement.innerHTML = `${characterData.name} ${characterData.rank}`;
     infoElement.innerHTML = `Aspect: ${characterData.aspect}<br>Weapon: ${characterData.weapon}<br>Power: ${characterData.power}`;
