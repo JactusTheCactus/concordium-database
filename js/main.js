@@ -1,3 +1,6 @@
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
 fetch('/assets/data.json')
     .then(response => {
         if (!response.ok) {
@@ -82,15 +85,16 @@ function generateCharacterSelectPage(data, category) {
     // Render the filtered characters
     filteredCharacters.forEach(([key, char]) => {
         const listItem = document.createElement('div');
-        const categoryTitle = document.createElement('p');
+        const categoryTitle = document.getElementById('categoryTitle');
         const infoElement = document.getElementById('categoryTitle');
         categoryTitle.innerHTML = `
-                            Select a ${category}
+                            Select a ${capitalize(category)}
         `
-        console.log(`Category: ${category}`)
         listItem.classList.add('character-card');
         listItem.innerHTML = `
-        <a href="/character.html?category=${category}&character=${key}">${char.name} (${char.aspect})</a>
+        <a href="/character.html?category=${category}&character=${key}">
+            ${char.name} ${char.rank}, ${char.animal} ${char.alignment} ${char.aspect}
+        </a>
         `;
         listContainer.appendChild(listItem);
     });
