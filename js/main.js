@@ -101,7 +101,7 @@ function generateCharacterDetailPage(characterData, data) {
         return;
     }
     function epithet(characterData) {
-        if (characterData.epithet != `""`) {
+        if (characterData.epithet != `undefined`) {
             return `"${characterData.epithet}"`
         }
         else {
