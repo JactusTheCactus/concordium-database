@@ -48,8 +48,15 @@ function generateCharacterSelectPage(data, category) {
     });
 }
 
+const characterData = data[character];
+if (!characterData) {
+    console.error('Character not found:', character);
+    document.body.innerHTML = '<h1>Character not found</h1>';
+    return;
+}
+
 // Function to generate the character detail page
-function generateCharacterDetailPage(character) {
+function generateCharacterDetailPage(characterData) {
     const nameElement = document.getElementById('character-name');
     const infoElement = document.getElementById('character-info');
     const detailsContainer = document.getElementById('character-details');
@@ -75,3 +82,5 @@ function generateCharacterDetailPage(character) {
         detailsContainer.appendChild(listItem);
     });
 }
+
+generateCharacterDetailPage(characterData);
