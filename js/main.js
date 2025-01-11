@@ -11,9 +11,7 @@ fetch('/assets/data.json')
         if (category && !character) {
             generateCharacterSelectPage(data, category);
         } else if (category && character) {
-            const characterData = Object.values(data).find((charGroup) =>
-                Object.keys(charGroup).includes(character)
-            )?.[character];
+            const characterData = Object.entries(data).find(([key]) => key === character)?.[1];
             console.log('Character Data:', characterData); // Log the character data
             if (characterData) {
                 generateCharacterDetailPage(characterData);
