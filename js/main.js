@@ -109,7 +109,7 @@ function generateCharacterDetailPage(characterData, data) {
         }
     }
 
-    nameElement.innerHTML = `${characterData.name} ${characterData.rank}<br>${characterData.animal} ${characterData.alignment} of ${characterData.aspect}<br>"${characterData.epithet}"`;
+    nameElement.innerHTML = `${characterData.name} ${characterData.rank}<br>${characterData.animal} ${characterData.alignment} of ${characterData.aspect}<br>${characterData.epithet}`;
     infoElement.innerHTML = `
                                 Weapon: <u>${characterData.weapon}</u>
                                 <br>
