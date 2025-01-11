@@ -14,7 +14,7 @@ fetch('/assets/data.json')
             // If both category and character are in the URL, generate the character detail page
             const characterData = data[character];  // Access character data by key
             if (characterData) {
-                generateCharacterDetailPage(characterData);
+                generateCharacterDetailPage(characterData, data);  // Pass `data` to the function
             } else {
                 console.error('Character not found:', character);
                 document.body.innerHTML = '<h1>Character not found</h1>';
@@ -87,14 +87,14 @@ function generateCharacterSelectPage(data, category) {
     });
 }
 
-function generateCharacterDetailPage(characterData) {
+function generateCharacterDetailPage(characterData, data) {
     const nameElement = document.getElementById('character-name');
     const infoElement = document.getElementById('character-info');
     const detailsContainer = document.getElementById('character-details');
     console.log(characterData);
-    var inverseAspect = characterData.inverse;
-    console.log(inverseAspect);
-    const inverseCharacterData = data[characterData.inverse.toLowerCase()]; // Assuming inverse is in lowercase format
+    
+    // Get the inverse character data using the 'inverse' key
+    const inverseCharacterData = data[characterData.inverse.toLowerCase()];  // Use .toLowerCase() to match the keys
     console.log('Inverse Character Data:', inverseCharacterData);
     
     if (!nameElement || !infoElement || !detailsContainer) {
@@ -110,7 +110,7 @@ function generateCharacterDetailPage(characterData) {
         { label: 'Animal', value: characterData.animal },
         { label: 'Colour', value: characterData.colour },
         { label: 'Species', value: characterData.species },
-        { label: 'Inverse', value: inverseAspect.name },
+        { label: 'Inverse', value: inverseCharacterData ? inverseCharacterData.name : 'Unknown' }, // Use inverse character's name
         { label: 'Epithet', value: characterData.epithet || 'None' }
     ];
     
