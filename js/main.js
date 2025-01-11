@@ -1,7 +1,12 @@
 fetch('/assets/data.json')
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+        return response.json();
+    })
     .then(data => {
-        console.log('Fetched Data:', data); // Log the fetched data
+        console.log('Fetched Data:', data); // Log the fetched data for debugging
         const urlParams = new URLSearchParams(window.location.search);
         console.log('URL Parameters:', urlParams.toString()); // Log the URL parameters
         const category = urlParams.get('category');
@@ -28,8 +33,8 @@ fetch('/assets/data.json')
         }
     })
     .catch((error) => {
-        console.error('Error loading data:', error);
-        document.body.innerHTML = '<h1>Error loading the page</h1>';
+        console.error('Error loading data:', error);  // More specific logging
+        document.body.innerHTML = `<h1>Error loading the page: ${error.message}</h1>`;  // Display the error message
     });
 
 function generateMainPage() {
