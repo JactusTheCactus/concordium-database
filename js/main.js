@@ -99,7 +99,7 @@ function generateCharacterDetailPage(characterData) {
 
     console.log('Generating character page for:', characterData); // Debugging log
 
-    nameElement.innerHTML = characterData.name;
+    nameElement.innerHTML = `${characterData.name}`;
     infoElement.innerHTML = `Aspect: ${characterData.aspect}<br>Weapon: ${characterData.weapon}<br>Power: ${characterData.power}`;
     
     // Display additional details in a list
