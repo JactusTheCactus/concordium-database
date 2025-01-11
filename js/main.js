@@ -2,7 +2,9 @@
 fetch('/assets/data.json')
     .then(response => response.json())
     .then(data => {
+        console.log('Fetched Data:', data); // Log the fetched data
         const urlParams = new URLSearchParams(window.location.search);
+        console.log('URL Parameters:', urlParams.toString()); // Log the URL parameters
         const category = urlParams.get('category');
         const character = urlParams.get('character');
         
@@ -12,6 +14,7 @@ fetch('/assets/data.json')
             const characterData = Object.values(data).find((charGroup) =>
                 Object.keys(charGroup).includes(character)
             )?.[character];
+            console.log('Character Data:', characterData); // Log the character data
             if (characterData) {
                 generateCharacterDetailPage(characterData);
             } else {
@@ -61,9 +64,16 @@ function generateCharacterSelectPage(data, category) {
 
 // Function to generate the character detail page
 function generateCharacterDetailPage(characterData) {
+    console.log('Generating character page for:', characterData); // Debugging log
     const nameElement = document.getElementById('character-name');
     const infoElement = document.getElementById('character-info');
     const detailsContainer = document.getElementById('character-details');
+
+    if (!characterData) {
+        console.error('Invalid character data:', characterData);
+        document.body.innerHTML = '<h1>Character data not found</h1>';
+        return;
+    }
     
     nameElement.innerHTML = characterData.name;
     infoElement.innerHTML = `Aspect: ${characterData.aspect}<br>Weapon: ${characterData.weapon}<br>Power: ${characterData.power}`;
