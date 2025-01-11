@@ -33,8 +33,21 @@ fetch('/assets/data.json')
     });
 
 function generateMainPage() {
-    // Main page is already in HTML, but you can modify it dynamically if needed
-    document.body.innerHTML = '<h1>Select a category to get started</h1>';
+    // Create a simple list with links to "Sin" and "Virtue"
+    const mainContainer = document.getElementById('main-page');
+    mainContainer.innerHTML = ''; // Clear the container
+    
+    const sinLink = document.createElement('a');
+    sinLink.href = '/character.html?category=sin';
+    sinLink.innerHTML = 'View the Sins';
+    
+    const virtueLink = document.createElement('a');
+    virtueLink.href = '/character.html?category=virtue';
+    virtueLink.innerHTML = 'View the Virtues';
+    
+    mainContainer.appendChild(sinLink);
+    mainContainer.appendChild(document.createElement('br'));
+    mainContainer.appendChild(virtueLink);
 }
 
 function generateCharacterSelectPage(data, category) {
