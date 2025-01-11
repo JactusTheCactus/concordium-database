@@ -90,14 +90,13 @@ function generateCharacterSelectPage(data, category) {
 function generateCharacterDetailPage(characterData, data) {
     const nameElement = document.getElementById('character-name');
     const infoElement = document.getElementById('character-info');
-    const detailsContainer = document.getElementById('character-details');
     console.log(characterData);
     
     // Get the inverse character data using the 'inverse' key
     const inverseCharacterData = data[characterData.inverse.toLowerCase()];  // Use .toLowerCase() to match the keys
     console.log('Inverse Character Data:', inverseCharacterData);
     
-    if (!nameElement || !infoElement || !detailsContainer) {
+    if (!nameElement || !infoElement) {
         console.error("One or more required elements for character detail page not found!");
         return;
     }
