@@ -117,7 +117,8 @@ function generateCharacterDetailPage(characterData, data) {
                                 Species: <u>${characterData.species}</u><br>
                                 Power: <u>${characterData.power}</u><br>
                                 Gear Colour: <u>${characterData.colour}</u><br>
-                                Weapon: <u>${characterData.weapon}</u><br><br>
-                                Inverse ${inverseCharacterData.alignment}: <u>${inverseCharacterData.name} ${inverseCharacterData.rank}</u>
+                                Weapon: <u>${characterData.weapon}</u><br>
+                                <br>Inverse ${inverseCharacterData.alignment}: <u>${inverseCharacterData.name} ${inverseCharacterData.rank}</u><br>
+                                <br><a href="/index.html">Back</a>
     `
 }
