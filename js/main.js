@@ -101,7 +101,7 @@ function generateCharacterDetailPage(characterData, data) {
         return;
     }
     function epithet(characterData) {
-        if (characterData.epithet != `undefined`) {
+        if (characterData.epithet != ``) {
             return `"${characterData.epithet}"`
         }
         else {
@@ -109,7 +109,7 @@ function generateCharacterDetailPage(characterData, data) {
         }
     }
 
-    nameElement.innerHTML = `${characterData.name} ${characterData.rank}<br>${characterData.animal} ${characterData.alignment} of ${characterData.aspect}<br>${epithet(characterData.epithet)}`;
+    nameElement.innerHTML = `${characterData.name} ${characterData.rank}<br>${characterData.animal} ${characterData.alignment} of ${characterData.aspect}<br>${epithet(characterData)}`;
     infoElement.innerHTML = `
                                 Weapon: <u>${characterData.weapon}</u>
                                 <br>
