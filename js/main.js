@@ -103,11 +103,10 @@ function generateCharacterDetailPage(characterData, data) {
     }
 
     nameElement.innerHTML = `${characterData.name} ${characterData.rank}, ${characterData.animal} ${characterData.alignment} of ${characterData.aspect}`;
-    infoElement.innerHTML = `Aspect: ${characterData.aspect}<br>Weapon: ${characterData.weapon}<br>Power: ${characterData.power}`;
+    infoElement.innerHTML = `Weapon: ${characterData.weapon}<br>Power: ${characterData.power}`;
     
     // Display additional details in a list
     const details = [
-        { label: 'Animal', value: characterData.animal },
         { label: 'Colour', value: characterData.colour },
         { label: 'Species', value: characterData.species },
         { label: 'Inverse', value: `${inverseCharacterData.name} ${inverseCharacterData.rank}` }, // Use inverse character's name
