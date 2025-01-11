@@ -110,7 +110,7 @@ function generateCharacterDetailPage(characterData, data) {
         { label: 'Animal', value: characterData.animal },
         { label: 'Colour', value: characterData.colour },
         { label: 'Species', value: characterData.species },
-        { label: 'Inverse', value: inverseCharacterData ? inverseCharacterData.name : 'Unknown' }, // Use inverse character's name
+        { label: 'Inverse', value: `${inverseCharacterData.name} ${inverseCharacterData.rank}` }, // Use inverse character's name
         { label: 'Epithet', value: characterData.epithet || 'None' }
     ];
     
