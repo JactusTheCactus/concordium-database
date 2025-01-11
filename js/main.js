@@ -24,7 +24,9 @@ function generateMainPage() {
 function generateCharacterSelectPage(data, category) {
     if (!data || typeof data !== 'object') {
         console.error('Invalid data received:', data); // Log invalid data
-        return;
+        const listContainer = document.getElementById('character-list');
+        listContainer.innerHTML = '<li>Error loading characters</li>';
+        return; // Ensure this return is inside the function
     }
 
     const listContainer = document.getElementById('character-list');
@@ -37,7 +39,7 @@ function generateCharacterSelectPage(data, category) {
 
     if (filteredCharacters.length === 0) {
         listContainer.innerHTML = `<li>No Concordants found for ${category}</li>`;
-        return;
+        return; // This is now safe since it's inside the function
     }
 
     // Generate list items
