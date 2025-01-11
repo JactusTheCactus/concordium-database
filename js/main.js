@@ -99,7 +99,7 @@ function generateCharacterDetailPage(characterData) {
 
     console.log('Generating character page for:', characterData); // Debugging log
 
-    nameElement.innerHTML = characterData.name;
+    nameElement.innerHTML = `${characterData.name} `${character.rank};
     infoElement.innerHTML = `Aspect: ${characterData.aspect}<br>Weapon: ${characterData.weapon}<br>Power: ${characterData.power}`;
     
     // Display additional details in a list
@@ -108,7 +108,6 @@ function generateCharacterDetailPage(characterData) {
         { label: 'Colour', value: characterData.colour },
         { label: 'Species', value: characterData.species },
         { label: 'Sex', value: characterData.sex },
-        { label: 'Rank', value: characterData.rank },
         { label: 'Alignment', value: characterData.alignment },
         { label: 'Inverse', value: characterData.inverse },
         { label: 'Epithet', value: characterData.epithet || 'None' }
