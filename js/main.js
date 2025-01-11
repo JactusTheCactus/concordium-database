@@ -92,11 +92,11 @@ function generateCharacterDetailPage(characterData) {
     const infoElement = document.getElementById('character-info');
     const detailsContainer = document.getElementById('character-details');
     console.log(characterData);
-
-    // Get inverse character data
+    var inverseAspect = characterData.inverse;
+    console.log(inverseAspect);
     const inverseCharacterData = data[characterData.inverse.toLowerCase()]; // Assuming inverse is in lowercase format
     console.log('Inverse Character Data:', inverseCharacterData);
-
+    
     if (!nameElement || !infoElement || !detailsContainer) {
         console.error("One or more required elements for character detail page not found!");
         return;
@@ -110,7 +110,7 @@ function generateCharacterDetailPage(characterData) {
         { label: 'Animal', value: characterData.animal },
         { label: 'Colour', value: characterData.colour },
         { label: 'Species', value: characterData.species },
-        { label: 'Inverse', value: inverseCharacterData ? inverseCharacterData.name : 'Unknown' }, // Use inverse character's name
+        { label: 'Inverse', value: inverseAspect.name },
         { label: 'Epithet', value: characterData.epithet || 'None' }
     ];
     
