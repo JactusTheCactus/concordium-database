@@ -1,4 +1,3 @@
-// Load character data from the JSON file
 fetch('/assets/data.json')
     .then(response => response.json())
     .then(data => {
@@ -28,12 +27,10 @@ fetch('/assets/data.json')
         document.body.innerHTML = '<h1>Error loading the page</h1>';
     });
 
-// Function to generate the main page (Sin or Virtue?)
 function generateMainPage() {
     // Main page is already in HTML, but you can modify it dynamically if needed
 }
 
-// Function to generate the character select page
 function generateCharacterSelectPage(data, category) {
     const listContainer = document.getElementById('character-list');
     if (!data || typeof data !== 'object') {
@@ -60,7 +57,6 @@ function generateCharacterSelectPage(data, category) {
     });
 }
 
-// Function to generate the character detail page
 function generateCharacterDetailPage(characterData) {
     console.log('Generating character page for:', characterData); // Debugging log
     const nameElement = document.getElementById('character-name');
